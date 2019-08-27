@@ -1,4 +1,5 @@
 import React from 'react';
+// import Lightbox from './components/Lightbox';
 
 const images =[
     { id: 1, thumb: '/images/thumbs/image-1.jpg', image: '/images/image-1.jpg' },
@@ -30,18 +31,65 @@ const images =[
 
 
 
-const Gallery = (props) => {
-    return (
-        <div className="row">
-            { images.map(({id, thumb, image}) => 
-                <figure className="col-md-2">
-                    <a href={image}>
-                        <img data-id={id} src={thumb} className="img-fluid" alt="19029 SW YORK ST" />
-                    </a>
-                </figure>
-            ) } 
-        </div> 
-    )
+
+class Gallery extends React.Component {
+    constructor() {
+        super();
+        this.state = { show: false };
+    }
+     
+    toggleModal = (id) => {
+        this.setState({
+            image_id: id,
+            show: !this.state.show,
+            image: images[(id -1)]
+        });
+    }
+    previousImage = (id) => {
+        if (id > 1) {
+            this.setState({
+                image_id: id - 1,
+                show: true,
+                image: images[(id - 2)]
+            });
+        }
+        
+    }
+
+    nextImage = (id) => {
+        if (id < images.length) {
+            this.setState({
+                image_id: id + 1,
+                show: true,
+                image: images[(id)]
+            });
+        }
+        
+    }
+
+    render() {
+        return (
+            <div className="row">
+                { images.map(({id, thumb, image}) => 
+                    <figure className="col-6 col-sm-6 col-md-2">
+                        {/* <a href={image}> */}
+                            <img data-id={id} src={thumb} className="img-fluid" alt="19029 SW YORK ST" onClick={() => {this.toggleModal(id)}}/>
+                        {/* </a> */}
+                    </figure>
+                ) } 
+                {this.state.show ? (
+                    <div className="overlay overlay-effect">
+                        {this.state.image_id > 1 ? (<button type="button" className="left-arrow" onClick={() => {this.previousImage(this.state.image_id)}}>Previous</button>) :null}
+                        {this.state.image_id < images.length ? (<button type="button" className="right-arrow" onClick={() => {this.nextImage(this.state.image_id)}}>Forward</button>) :null}
+                        <button type="button" className="close"  onClick={() => {this.toggleModal(0)}}>Close</button>
+                        <span class="helper"></span>
+                            <img data-id={this.state.image_id} src={this.state.image.image} className="img-fluid" alt="19029 SW YORK ST"/>
+                    </div>
+                ) : null}
+            {/* <Lightbox /> */}
+            </div> 
+        )
+                }
 }
 
 export default Gallery;
