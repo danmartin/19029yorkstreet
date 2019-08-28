@@ -16,8 +16,8 @@ const config_data = {
     baths: "2.5",
     sq_feet: "2200+",
     lot_size: "3900",
-    mls: "",
-    built_in: "",
+    mls: "19448021",
+    built_in: "2005",
     blurb: ""
   }
 };
