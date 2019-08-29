@@ -21,17 +21,20 @@ iframe {
     background: rgba(#000, 0.85);
     z-index:1021;
     vertical-align: middle;
-    // .helper {
-        // display: inline-block;
-        // height: 100%;
-        // vertical-align: middle;
+    .helper {
+        display: relative;
+        height: 100%;
+        width: 100%;
+        vertical-align: middle;
         img {
-            // display: inline-block;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
             max-width: 95%;
             margin: 0 auto;
             max-height: 95%;
         }
-    // }
+    }
     .close{
         width:40px;
         height:40px;
@@ -58,6 +61,7 @@ iframe {
         outline:none;
         color:transparent;
         opacity: 0.5;
+        z-index:1025;
     }
     .left-arrow {
         width:60px;
@@ -72,5 +76,6 @@ iframe {
         outline:none;
         color:transparent;
         opacity: 0.5;
+        z-index:1025;
     }
 } 

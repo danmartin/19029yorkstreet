@@ -80,8 +80,9 @@ class Gallery extends React.Component {
                         {this.state.image_id > 1 ? (<button type="button" className="left-arrow" onClick={() => {this.previousImage(this.state.image_id)}}>Previous</button>) :null}
                         {this.state.image_id < images.length ? (<button type="button" className="right-arrow" onClick={() => {this.nextImage(this.state.image_id)}}>Forward</button>) :null}
                         <button type="button" className="close"  onClick={() => {this.toggleModal(0)}}>Close</button>
-                        <span className="helper"></span>
-                            <img data-id={this.state.image_id} src={this.state.image.image} className="img-fluid" alt={this.props.config_data.display_address} />
+                        <div className="helper">
+                            <img data-id={this.state.image_id} src={this.state.image.image}  alt={this.props.config_data.display_address} />
+                        </div>
                     </div>
                 ) : null}
             </div> 
