@@ -18,9 +18,19 @@ const config_data = {
     lot_size: "3900",
     mls: "19448021",
     built_in: "2005",
-    blurb: ""
+    blurb: "Pristine 4 bedroom/2.5 bath home located on a quiet dead-end street, surrounded by protected greenspace and trails. Formal dining room, hardwood floors, huge living room, and gourmet kitchen. Kitchen includes granite countertops, cherry cabinets, breakfast bar, and stainless-steel appliances. Attached, 2-car garage and a private backyard with a trex deck, new deck stain, new interior and exterior paint, central vac, and central a/c. Master suite features gas fireplace, jetted tub, double sinks, large walk-in closet, and balcony!",
+    ammenities: [
+      {item:"4 bedrooms with a huge master suite"},
+      {item:"Upgraded carpet, new paint, engineered hardwoods, cherry cabinets"},
+      {item:"Protected green space on three sides"},
+      {item:"Extra parking"},
+      {item:"Blocks from a newly-planned Park"},
+      {item:"Formal dining"},
+      {item:"Central a/c, central vac"}
+    ]
   }
 };
+
 function App() {
   return (
     <div className="App">
@@ -48,15 +58,11 @@ function App() {
       
       <div className="position-relative overflow-hidden text-center">
         <div className="col-md-8 mx-auto my-5 blurb"> 
-          {/* <p className="display-5">4 bedrooms (with an amazing master suite), green space surrounding, 2 fireplaces, extra parking, and upgrades throughout.</p> */}
+          <p className="pb-5">{config_data.property.blurb}</p>
           <ul>
-            <li>4 bedrooms with a huge master suite</li>
-            <li>Upgraded carpet, new paint, engineered hardwoods, cherry cabinets</li>
-            <li>Protected green space on three sides</li>
-            <li>Extra parking</li>
-            <li>Blocks from a newly-planned Park</li>
-            <li>Formal dining</li>
-            <li>Central a/c, central vac</li>
+            { config_data.property.ammenities.map(({item}) =>
+                <li>{item}</li>
+            ) }
           </ul>
         </div>
       </div>
